@@ -62,6 +62,7 @@ const SignIn: React.FC = () => {
         formRef.current?.setErrors({
           name: 'nome obrigatorio',
         });
+
         await signIn({
           email: data.email,
           password: data.password,
