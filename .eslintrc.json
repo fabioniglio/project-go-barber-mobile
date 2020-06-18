@@ -29,6 +29,7 @@
     "react-hooks"
   ],
   "rules": {
+    "react/jsx-one-expression-per-line": "off",
     "no-unused-expressions": "off",
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
