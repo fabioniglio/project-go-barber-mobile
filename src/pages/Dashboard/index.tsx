@@ -31,7 +31,7 @@ export interface Provider {
 
 const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
-  const { signOut, user } = useAuth();
+  const { user } = useAuth();
 
   const { navigate } = useNavigation();
 
@@ -42,9 +42,8 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const navigateToProfile = useCallback(() => {
-    // navigate('Profile');
-    signOut();
-  }, [signOut]);
+    navigate('Profile');
+  }, [navigate]);
 
   const navigatetoCreateAppointment = useCallback(
     (providerId: string) => {

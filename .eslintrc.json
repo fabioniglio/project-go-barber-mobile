@@ -29,6 +29,7 @@
     "react-hooks"
   ],
   "rules": {
+    "import/no-duplicates": "off",
     "@typescript-eslint/camelcase": "off",
     "react/jsx-one-expression-per-line": "off",
     "no-unused-expressions": "off",

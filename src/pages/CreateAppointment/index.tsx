@@ -213,7 +213,7 @@ const CreateAppointment: React.FC = () => {
           <Section>
             <SectionTitle>Morning</SectionTitle>
 
-            <SectionContent>
+            <SectionContent showsHorizontalScrollIndicator={false}>
               {morningAvailability.map(({ hourFormatted, hour, available }) => (
                 <Hour
                   enabled={available}
@@ -232,7 +232,7 @@ const CreateAppointment: React.FC = () => {
 
           <Section>
             <SectionTitle>Afternoon</SectionTitle>
-            <SectionContent>
+            <SectionContent showsHorizontalScrollIndicator={false}>
               {afternoonAvailability.map(
                 ({ hourFormatted, hour, available }) => (
                   <Hour
