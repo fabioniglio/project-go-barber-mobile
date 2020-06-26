@@ -17,6 +17,7 @@ import {
   ProviderName,
   ProviderMeta,
   ProviderMetatext,
+  BackButton,
 } from './styles';
 
 import api from '../../services/api';
@@ -31,7 +32,7 @@ export interface Provider {
 
 const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   const { navigate } = useNavigation();
 
@@ -65,7 +66,9 @@ const Dashboard: React.FC = () => {
           <UserAvatar source={{ uri: user.avatar_url }} />
         </ProfileButton>
       </Header>
-
+      <BackButton onPress={signOut}>
+        <Icon name="chevron-left" size={24} color="#999591" />
+      </BackButton>
       <ProvidersList
         data={providers}
         ListHeaderComponent={<ProvidersListTitle>Barbers</ProvidersListTitle>}

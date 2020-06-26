@@ -7,6 +7,10 @@ export const Container = styled.View`
   flex: 1;
 `;
 
+export const BackButton = styled.TouchableOpacity`
+  margin-top: 40px;
+`;
+
 export const Header = styled.View`
   padding: 24px;
   background: #28262e;

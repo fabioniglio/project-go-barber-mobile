@@ -140,8 +140,6 @@ const SignUp: React.FC = () => {
         } else if (response.customButton) {
           console.log('User tapped custom button: ', response.customButton);
         } else {
-          const source = { uri: response.uri };
-
           const data = new FormData();
 
           data.append('avatar', {
