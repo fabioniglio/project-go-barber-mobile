@@ -39,8 +39,6 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     api.get('providers').then((response) => {
       setProviders(response.data);
-      console.log(user);
-      console.log(response.data);
     });
   }, []);
 
