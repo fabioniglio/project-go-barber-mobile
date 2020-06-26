@@ -1,4 +1,5 @@
 import React, { useRef, useCallback } from 'react';
+import ImagePicker from 'react-native-image-picker';
 import {
   View,
   ScrollView,
@@ -121,6 +122,42 @@ const SignUp: React.FC = () => {
     [navigation, updateUser],
   );
 
+  const handleupdateAvatar = useCallback(() => {
+    ImagePicker.showImagePicker(
+      {
+        title: 'Select Avatar',
+        cancelButtonTitle: 'Cancel',
+        takePhotoButtonTitle: 'Use Camera',
+        chooseFromLibraryButtonTitle: 'Coose from Galery',
+      },
+      (response) => {
+        console.log('Response = ', response);
+
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          const source = { uri: response.uri };
+
+          const data = new FormData();
+
+          data.append('avatar', {
+            type: 'image/jpeg',
+            name: `${user.id}.jpg`,
+            uri: response.uri,
+          });
+
+          api.patch('users/avatar', data).then((apiResponse) => {
+            updateUser(apiResponse.data);
+          });
+        }
+      },
+    );
+  }, [updateUser, user.id]);
+
   const handleGoBack = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
@@ -139,7 +176,8 @@ const SignUp: React.FC = () => {
             <BackButton onPress={handleGoBack}>
               <Icon name="chevron-left" size={24} color="#999591" />
             </BackButton>
-            <UserAvatarButton onPress={() => {}}>
+
+            <UserAvatarButton onPress={handleupdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />
             </UserAvatarButton>
             <View>
